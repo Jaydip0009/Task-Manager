@@ -1,11 +1,12 @@
-const { Router } = require('Router')
-const {readTask, createTask, updateTask, deleteTask} = require('../controller/Task.controller')
+const { Router } = require('express')
+const {getTask, createTask, updateTask, deleteTask, getTaskId} = require('../controller/Task.controller')
 
 const taskRoute = Router()
 
-taskRoute.get('/read', readTask)
+taskRoute.get('/get', getTask)
+taskRoute.get('/:id', getTaskId)
 taskRoute.post('/createTask', createTask)
 taskRoute.patch('/updateTask/:id', updateTask)
-taskRoute.deleteTask('/deleteTask/:id', deleteTask)
+taskRoute.delete('/deleteTask/:id', deleteTask)
 
 module.exports = taskRoute
