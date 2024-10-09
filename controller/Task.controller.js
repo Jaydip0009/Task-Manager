@@ -1,7 +1,13 @@
 const Task = require('../model/task.schema')
 
-const readTask = async (req, res) =>{
+const getTask = async (req, res) =>{
     let data = Task.find()
+    res.send(data)
+}
+
+const getTaskId =async (req, res) => {
+    let {id} = req.params
+    let data = await Task.findById(id)
     res.send(data)
 }
 
@@ -18,8 +24,8 @@ const updateTask = async (req, res) => {
 
 const deleteTask =async (req, res) => {
     let {id} = req.params
-    let data =await Task.findByIdAndDelete(id, res.body)
+    let data = await Task.findByIdAndDelete(id)
     res.send(data)
 }
 
-module.exports = {readTask, createTask, updateTask, deleteTask}
+module.exports = {getTask, getTaskId, createTask, updateTask, deleteTask}
