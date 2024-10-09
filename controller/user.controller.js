@@ -6,8 +6,9 @@ const getUser = async (req, res) => {
 }
 
 const createUser = async (req, res) => {
-    let data = await User.findOne()
+    let data = await User.create(req.body)
     res.send(data)
+    console.log(data);
 } 
 
 const login = async (req, res) => {
