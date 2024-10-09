@@ -6,7 +6,7 @@ const getUser = async (req, res) => {
 }
 
 const createUser = async (req, res) => {
-    let data = await User.create()
+    let data = await User.findOne()
     res.send(data)
 } 
 
@@ -14,6 +14,9 @@ const login = async (req, res) => {
     let {email, password} = req.body
     if(!email){
         res.send('user not found')
+    }
+    if(!password){
+        res.send('password is incorrect !!')
     }
     else{
         res.send('loged in sucssefull')
