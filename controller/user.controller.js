@@ -19,15 +19,14 @@ const createUser = async (req, res) => {
 
 const login = async (req, res) => {
     let {email, password} = req.body
+    let user = await User.findOne({email})
     if(!email){
         res.send('user not found')
     }
-    if(!password){
+    if(user.password !== password){
         res.send('password is incorrect !!')
     }
-    else{
-        res.send('loged in sucssefull')
-    }
+    return res.send('loged in sucssefull')
 }
 
 module.exports = {getUser, createUser, login}
