@@ -6,9 +6,15 @@ const getUser = async (req, res) => {
 }
 
 const createUser = async (req, res) => {
-    let data = await User.create(req.body)
-    res.send(data)
-    console.log(data);
+    let {email, password} = req.body
+    let user = await User.findOne({email})
+    if(!user) {
+        let data = await User.create(req.body)
+        res.send(data)
+    }
+    else{
+        res.send({email:user.email, user})
+    }
 } 
 
 const login = async (req, res) => {
