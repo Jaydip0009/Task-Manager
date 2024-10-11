@@ -35,9 +35,10 @@ const login = async (req, res) => {
         return res.send('loged in sucssefull')
     }
     catch(e){
-        res.status(404).send({msg:e})
+        res.status(404).send({msg:"password is incorrect"})
 
     }
+    
 }
 
 module.exports = {getUser, createUser, login}
