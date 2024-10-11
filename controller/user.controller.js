@@ -8,25 +8,36 @@ const getUser = async (req, res) => {
 const createUser = async (req, res) => {
     let {email, password} = req.body
     let user = await User.findOne({email})
-    if(!user) {
-        let data = await User.create(req.body)
-        res.send(data)
+    try{
+        if(!user) {
+            let data = await User.create(req.body)
+            res.send(data)
+        }
+        else{
+            res.send({email:user.email, user})
+        }   
     }
-    else{
-        res.send({email:user.email, user})
+    catch(e){
+        res.status(404).send({msg:"user creting error"})
     }
 } 
 
 const login = async (req, res) => {
     let {email, password} = req.body
     let user = await User.findOne({email})
-    if(!email){
-        res.send('user not found')
+    try{
+        if(!email){
+            throw new Error('user not found')
+        }
+        if(user.password !== password){
+            throw new Error('password is incorrect !!')
+        }
+        return res.send('loged in sucssefull')
     }
-    if(user.password !== password){
-        res.send('password is incorrect !!')
+    catch(e){
+        res.status(404).send({msg:e})
+
     }
-    return res.send('loged in sucssefull')
 }
 
 module.exports = {getUser, createUser, login}
