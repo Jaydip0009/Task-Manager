@@ -5,6 +5,7 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+
 body {
   display: flex;
   align-items: center;
@@ -14,6 +15,7 @@ body {
   background: #EEEEEE;
   overflow: hidden;
 }
+
 .wrapper {
   max-width: 500px;
   width: 100%;
@@ -21,6 +23,7 @@ body {
   border-radius: 5px;
   box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.1);
 }
+
 .wrapper .title {
   height: 120px;
   background: #00ADB5;
@@ -32,14 +35,17 @@ body {
   align-items: center;
   justify-content: center;
 }
+
 .wrapper form {
   padding: 25px 35px;
 }
+
 .wrapper form .row {
   height: 60px;
   margin-top: 15px;
   position: relative;
 }
+
 .wrapper form .row input {
   height: 100%;
   width: 100%;
@@ -50,6 +56,7 @@ body {
   font-size: 18px;
   transition: all 0.3s ease;
 }
+
 form .row input:focus {
   border-color: #16a085;
 }
