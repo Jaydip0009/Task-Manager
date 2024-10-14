@@ -12,7 +12,8 @@ const getTaskId =async (req, res) => {
 }
 
 const createTask = async (req, res) => {
-    let data = Task.create()
+    let {id} = req.params
+    let data = await Task.create(id, req.body)
     res.send(data)
 }
 
